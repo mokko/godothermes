@@ -16,7 +16,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 
 	# WASD movement in world space (W = -Z forward, S = +Z back, A = -X left, D = +X right).
-	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
+	var input_dir := Input.get_vector("move_left", "move_right", "move_back", "move_forward")
 	var direction := Vector3(input_dir.x, 0, -input_dir.y).normalized()
 
 	if direction:
