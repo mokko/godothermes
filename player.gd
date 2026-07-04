@@ -18,6 +18,7 @@ var orbs_collected: int = 0
 @onready var game_over_label: CanvasItem = get_tree().get_first_node_in_group("game_over_label")
 @onready var orb_label: Label = get_tree().get_first_node_in_group("orb_label")
 @onready var camera: Camera3D = $Camera3D
+@onready var pickup_sound: AudioStreamPlayer = $AudioStreamPlayer
 
 
 func _ready() -> void:
@@ -80,6 +81,8 @@ func _physics_process(delta: float) -> void:
 func heal(amount: float) -> void:
 	life += amount
 	orbs_collected += 1
+	if pickup_sound:
+		pickup_sound.play()
 	_update_hud()
 
 
