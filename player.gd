@@ -7,8 +7,8 @@ const LIFE_DRAIN_PER_SEC = 1.0
 const ORB_HEAL = 15.0
 const MOUSE_SENSITIVITY = 0.002
 const ZOOM_SPEED = 5.0
-const FOV_MIN = 30.0
-const FOV_MAX = 110.0
+const FOV_MIN = 50.0
+const FOV_MAX = 150.0
 const FOV_DEFAULT = 75.0
 
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -81,12 +81,16 @@ func _physics_process(delta: float) -> void:
 	var input_dir := Input.get_vector("move_left", "move_right", "move_back", "move_forward")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, -input_dir.y)).normalized()
 
+	var current_speed := SPEED
+	if Input.is_physical_key_pressed(KEY_SHIFT):
+		current_speed = SPEED * 2.0
+
 	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+		velocity.x = direction.x * current_speed
+		velocity.z = direction.z * current_speed
 	else:
-		velocity.x = move_toward(velocity.x, 0.0, SPEED)
-		velocity.z = move_toward(velocity.z, 0.0, SPEED)
+		velocity.x = move_toward(velocity.x, 0.0, current_speed)
+		velocity.z = move_toward(velocity.z, 0.0, current_speed)
 
 	move_and_slide()
 

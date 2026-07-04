@@ -3,6 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://bp1ayer000000" path="res://player.tscn" id="1_player"]
 [ext_resource type="PackedScene" path="res://orb.tscn" id="2_orb"]
 
+[sub_resource type="Environment" id="Env_main"]
+background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(0.4, 0.45, 0.55, 1)
+ambient_light_energy = 0.6
+tonemap_mode = 2
+
 [sub_resource type="StandardMaterial3D" id="GroundMaterial"]
 albedo_color = Color(0.35, 0.25, 0.15, 1)
 
@@ -14,8 +21,12 @@ size = Vector2(200, 200)
 
 [node name="Main" type="Node3D" unique_id=2073018650]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1709939004]
+environment = SubResource("Env_main")
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=892400352]
 transform = Transform3D(0.8320503, 0.2769187, 0.48063323, 0, 0.8664739, -0.49922234, -0.5547002, 0.4153781, 0.7209499, 0, 10, 0)
+light_energy = 1.3
 
 [node name="Ground" type="MeshInstance3D" parent="." unique_id=679545094]
 material_override = SubResource("GroundMaterial")
