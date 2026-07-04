@@ -35,15 +35,16 @@ offset_right = 200.0
 offset_bottom = 40.0
 text = "Life: 100"
 
-[node name="OrbLabel" type="Label" parent="HUD" groups=["orb_label"]]
+[node name="OrbLabel" type="Label" parent="HUD" unique_id=60916123 groups=["orb_label"]]
+anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -190.0
 offset_top = 10.0
 offset_right = -10.0
 offset_bottom = 40.0
-horizontal_alignment = 2
 text = "Orbs: 0"
+horizontal_alignment = 2
 
 [node name="GameOverContainer" type="CenterContainer" parent="HUD" unique_id=736515951 groups=["game_over_label"]]
 visible = false

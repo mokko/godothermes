@@ -4,8 +4,12 @@ const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const START_LIFE = 20.0
 const LIFE_DRAIN_PER_SEC = 1.0
-const ORB_HEAL = 30.0
+const ORB_HEAL = 15.0
 const MOUSE_SENSITIVITY = 0.002
+const ZOOM_SPEED = 5.0
+const FOV_MIN = 30.0
+const FOV_MAX = 110.0
+const FOV_DEFAULT = 75.0
 
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -19,11 +23,13 @@ var orbs_collected: int = 0
 @onready var orb_label: Label = get_tree().get_first_node_in_group("orb_label")
 @onready var camera: Camera3D = $Camera3D
 @onready var pickup_sound: AudioStreamPlayer = $AudioStreamPlayer
+@onready var game_over_sound: AudioStreamPlayer = $GameOverSound
 
 
 func _ready() -> void:
 	_update_hud()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	camera.fov = FOV_DEFAULT
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -33,6 +39,13 @@ func _unhandled_input(event: InputEvent) -> void:
 		# Pitch the camera (rotate around X), clamp to avoid flipping.
 		camera.rotate_x(-event.relative.y * MOUSE_SENSITIVITY)
 		camera.rotation.x = clamp(camera.rotation.x, -1.2, 1.2)
+
+	# Scroll wheel zoom.
+	if event is InputEventMouseButton and event.pressed:
+		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+			camera.fov = max(camera.fov - ZOOM_SPEED, FOV_MIN)
+		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			camera.fov = min(camera.fov + ZOOM_SPEED, FOV_MAX)
 
 	# ESC frees the mouse (or triggers restart during game over).
 	if event.is_action_pressed("ui_cancel"):
@@ -91,6 +104,8 @@ func _trigger_game_over() -> void:
 	velocity = Vector3.ZERO
 	if game_over_label:
 		game_over_label.visible = true
+	if game_over_sound:
+		game_over_sound.play()
 	# Free the mouse so player can click.
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	_update_hud()
@@ -101,6 +116,7 @@ func _restart() -> void:
 	life = START_LIFE
 	_drain_accum = 0.0
 	orbs_collected = 0
+	camera.fov = FOV_DEFAULT
 	if game_over_label:
 		game_over_label.visible = false
 	# Re-capture mouse.
