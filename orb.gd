@@ -16,5 +16,14 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("player"):
-		body.heal(30.0)
-		queue_free()
+		body.heal(body.ORB_HEAL)
+		# Hide and disable instead of freeing so we can respawn on restart.
+		visible = false
+		$CollisionShape3D.set_deferred("disabled", true)
+		set_process(false)
+
+
+func respawn() -> void:
+	visible = true
+	$CollisionShape3D.set_deferred("disabled", false)
+	set_process(true)

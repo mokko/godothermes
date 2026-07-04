@@ -15,7 +15,7 @@ height = 0.6
 [sub_resource type="SphereShape3D" id="SphereShape3D_orb"]
 radius = 0.4
 
-[node name="Orb" type="Area3D"]
+[node name="Orb" type="Area3D" groups=["orb"]]
 script = ExtResource("1_orb")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
