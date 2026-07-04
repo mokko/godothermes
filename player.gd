@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
-const START_LIFE = 100.0
+const START_LIFE = 20.0
 const LIFE_DRAIN_PER_SEC = 1.0
 const ORB_HEAL = 30.0
 
@@ -13,7 +13,7 @@ var _drain_accum: float = 0.0
 var _game_over: bool = false
 
 @onready var life_label: Label = get_tree().get_first_node_in_group("life_label")
-@onready var game_over_label: Label = get_tree().get_first_node_in_group("game_over_label")
+@onready var game_over_label: CanvasItem = get_tree().get_first_node_in_group("game_over_label")
 
 
 func _ready() -> void:
