@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bp1ayer000000"]
+[gd_scene load_steps=4 format=3 uid="uid://bp1ayer000000"]
 
 [ext_resource type="Script" uid="uid://ckqqqfm5rt87e" path="res://player.gd" id="1_player"]
 
@@ -12,7 +12,7 @@ height = 1.7358643
 
 [sub_resource type="SphereMesh" id="SphereMesh_ayxlv"]
 
-[node name="Player" type="CharacterBody3D" unique_id=1349096873]
+[node name="Player" type="CharacterBody3D" unique_id=1349096873 groups=["player"]]
 script = ExtResource("1_player")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1179555768]
