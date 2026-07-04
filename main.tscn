@@ -8,7 +8,7 @@ albedo_color = Color(0.35, 0.25, 0.15, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ground"]
 material = SubResource("GroundMaterial")
-size = Vector2(50, 50)
+size = Vector2(200, 200)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ground"]
 
@@ -34,6 +34,16 @@ offset_top = 10.0
 offset_right = 200.0
 offset_bottom = 40.0
 text = "Life: 100"
+
+[node name="OrbLabel" type="Label" parent="HUD" groups=["orb_label"]]
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -190.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 40.0
+horizontal_alignment = 2
+text = "Orbs: 0"
 
 [node name="GameOverContainer" type="CenterContainer" parent="HUD" unique_id=736515951 groups=["game_over_label"]]
 visible = false
@@ -61,46 +71,46 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
 [node name="Orbs" type="Node3D" parent="." unique_id=1214481042]
 
 [node name="Orb1" parent="Orbs" unique_id=234079540 instance=ExtResource("2_orb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.5, -5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0.5, -20)
 
 [node name="Orb2" parent="Orbs" unique_id=729478081 instance=ExtResource("2_orb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, -5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0.5, -20)
 
 [node name="Orb3" parent="Orbs" unique_id=1987959602 instance=ExtResource("2_orb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.5, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0.5, 20)
 
 [node name="Orb4" parent="Orbs" unique_id=1665067046 instance=ExtResource("2_orb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0.5, 20)
 
 [node name="Orb5" parent="Orbs" unique_id=87680657 instance=ExtResource("2_orb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0.5, 0)
 
 [node name="Orb6" parent="Orbs" unique_id=179656602 instance=ExtResource("2_orb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 0.5, 0)
 
 [node name="Orb7" parent="Orbs" unique_id=1770817593 instance=ExtResource("2_orb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -40)
 
 [node name="Orb8" parent="Orbs" unique_id=2055474374 instance=ExtResource("2_orb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 40)
 
 [node name="Orb9" parent="Orbs" unique_id=890253867 instance=ExtResource("2_orb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.5, -8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0.5, -32)
 
 [node name="Orb10" parent="Orbs" unique_id=466979474 instance=ExtResource("2_orb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0.5, -8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0.5, -32)
 
 [node name="Orb11" parent="Orbs" unique_id=385646981 instance=ExtResource("2_orb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.5, 8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0.5, 32)
 
 [node name="Orb12" parent="Orbs" unique_id=633529588 instance=ExtResource("2_orb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0.5, 8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0.5, 32)
 
 [node name="Orb13" parent="Orbs" unique_id=576526972 instance=ExtResource("2_orb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.5, -3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 0.5, -12)
 
 [node name="Orb14" parent="Orbs" unique_id=1841852346 instance=ExtResource("2_orb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0.5, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 0.5, 12)
 
 [node name="Orb15" parent="Orbs" unique_id=207959194 instance=ExtResource("2_orb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.5, 12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.5, 48)
