@@ -2,13 +2,13 @@ extends CharacterBody3D
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
-const MAX_LIFE = 100.0
+const START_LIFE = 100.0
 const LIFE_DRAIN_PER_SEC = 1.0
 const ORB_HEAL = 30.0
 
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-var life: float = MAX_LIFE
+var life: float = START_LIFE
 var _drain_accum: float = 0.0
 
 @onready var life_label: Label = get_tree().get_first_node_in_group("life_label")
@@ -49,7 +49,7 @@ func _physics_process(delta: float) -> void:
 
 
 func heal(amount: float) -> void:
-	life = min(life + amount, MAX_LIFE)
+	life = life + amount
 	_update_hud()
 
 
